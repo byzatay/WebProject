@@ -1,0 +1,73 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.news-card {
+  margin-bottom: 10px;
+}
+
+
+
+.title {
+  text-align: center;
+  font-family: 'Open Sans', 'Segoe UI', 'Droid Sans', Tahoma, Arial, sans-serif;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #5f7676;
+  background: #f0f3f5;
+  height: '70px';
+  align-items: center;
+}
+
+
+.button {
+  margin-left: 10px;
+  float: right;
+  height: fit-content;
+  width: fit-content;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.pagination {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  & .MuiPagination-root {
+    margin-bottom: 20px;
+    /* Sayfanın en altına 20 piksel boşluk ekleyin */
+  }
+
+  & .MuiPaginationItem-root {
+    color: black;
+    background-color: #e0e0e0;
+  }
+
+  & .MuiPaginationItem-root.Mui-selected {
+    background-color: #8b8b84;
+  }
+
+  & .MuiPaginationItem-root.Mui-selected:hover {
+    background-color: #6b6b64;
+    /* Seçili sayfanın üzerine gelindiğindeki yeni arka plan rengi */
+  }
+}
