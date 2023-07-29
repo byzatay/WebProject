@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react';
-import { toast } from 'react-toastify';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { AddItemPopupProps, ItemType, ItemData } from '../props/Item';
+import { showToast } from '../../api';
 
 const AddPopup: React.FC<AddItemPopupProps> = ({ isOpen, toggle, onNewsAdded }) => {
 
@@ -16,7 +16,7 @@ const AddPopup: React.FC<AddItemPopupProps> = ({ isOpen, toggle, onNewsAdded }) 
     const handleAdd = async () => {
         try {
             if (!topic || !content || !expDate || (type === 'News' && !link) || (type === 'Announcement' && !image)) {
-                toast.error('All fields must be filled!');
+                showToast('All fields must be filled!', 'error')
                 return;
             }
 
@@ -33,12 +33,12 @@ const AddPopup: React.FC<AddItemPopupProps> = ({ isOpen, toggle, onNewsAdded }) 
 
             toggle();
             onNewsAdded();
-            toast.success('Haber veya duyuru başarıyla eklendi!');
+            showToast('Addition completed successfully.', 'success');
 
             setTitle(''); setContent(''); setExpDate(''); setLink(''); setImage('');
         } catch (error) {
             console.log(error);
-            toast.error('Hata oluştu, lütfen tekrar deneyin.');
+            showToast('Addition failed. Please try again.', 'error');
         }
     };
 

@@ -13,12 +13,10 @@ const BottomNavbar: React.FC<BottomNavbarProps> = ({ auth }) => {
 
     const navigate = useNavigate();
 
-
     const handleClick = (label: string) => {
         if (auth) {
             label += '-admin';
         }
-        console.log(label);
         navigate(label);
     };
 

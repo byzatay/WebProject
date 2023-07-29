@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Typography } from '@mui/material';
 import { Button, CardFooter } from 'reactstrap';
-import { toast } from 'react-toastify';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { ItemProps } from '../props/Item';
-import { deleteAnnouncement, updateAnnouncement } from '../../api';
+import { deleteAnnouncement, showToast, truncateContent, updateAnnouncement } from '../../api';
 import EditPopup from '../popups/EditPopup';
 
 const AnnouncementCard: React.FC<ItemProps> = ({ auth, handleDelete, handleUpdate, activity }) => {
@@ -19,17 +18,11 @@ const AnnouncementCard: React.FC<ItemProps> = ({ auth, handleDelete, handleUpdat
         updateAnnouncement(updatedData.id, updatedData)
             .then(() => {
                 handleUpdate();
-                toast.success('Update completed successfully.', {
-                    position: 'top-right', autoClose: 3000, hideProgressBar: false,
-                    closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined,
-                });
+                showToast('Update completed successfully.', 'success');
             })
             .catch((error) => {
                 console.error(error);
-                toast.error('Update failed. Please try again.', {
-                    position: 'top-right', autoClose: 3000, hideProgressBar: false, closeOnClick: true,
-                    pauseOnHover: true, draggable: true, progress: undefined,
-                });
+                showToast('Update failed. Please try again.', 'error');
             });
 
         setIsEditOpen(true);
@@ -41,26 +34,13 @@ const AnnouncementCard: React.FC<ItemProps> = ({ auth, handleDelete, handleUpdat
             deleteAnnouncement(activity.id)
                 .then(() => {
                     handleDelete();
-                    toast.success('Deletion completed successfully.', {
-                        position: 'top-right', autoClose: 3000, hideProgressBar: false,
-                        closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined,
-                    });
+                    showToast('Deletion completed successfully.', 'success');
                 })
                 .catch((error) => {
                     console.error(error);
-                    toast.error('Deletion failed. Please try again.', {
-                        position: 'top-right', autoClose: 3000, hideProgressBar: false,
-                        closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined,
-                    });
+                    showToast('Deletion failed. Please try again.', 'error');
                 });
         }
-    };
-
-    const truncateContent = (text: string, maxLength: number) => {
-        if (text.length <= maxLength) {
-            return text;
-        }
-        return text.slice(0, maxLength) + '...';
     };
 
     return (

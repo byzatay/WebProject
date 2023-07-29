@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react';
+import { TitleProps } from '../components/props/Item';
 
-interface CustomPageTitleProps {
-    title: string;
-    children: React.ReactNode;
-}
-
-const CustomPageTitle: React.FC<CustomPageTitleProps> = ({ title, children }) => {
+const PageTitle: React.FC<TitleProps> = ({ title, children }) => {
     useEffect(() => {
         document.title = `${title}`;
     }, [title]);
@@ -13,4 +9,4 @@ const CustomPageTitle: React.FC<CustomPageTitleProps> = ({ title, children }) =>
     return <>{children}</>;
 };
 
-export default CustomPageTitle;
+export default PageTitle;

@@ -1,63 +1,77 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const API_BASE_URL = 'http://localhost:8080'; // Spring Boot API URL'si
+const API_BASE_URL: string = 'http://localhost:8080'; // Spring Boot API URL'si
 
-export const fetchNews = async () => {
+export const fetchData = async (URL: string) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/news`);
-        console.log(response.data)
-        return response.data; // Haber verilerini döndür
+        const response = await axios.get(URL);
+        console.log(response.data);
+        return response.data;
     } catch (error) {
-        console.error('Haber verileri alınamadı:', error);
+        console.error(error);
         throw error;
     }
+};
+
+const updateData = async (URL: string, id: number, updatedData: any) => {
+    try {
+        const response = await axios.put(`${URL}/${id}`, updatedData);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw new Error('Failed to update data');
+    }
+};
+
+const deleteData = async (URL: string, id: number) => {
+    try {
+        await axios.delete(`${URL}/${id}`);
+    } catch (error) {
+        console.error(error);
+        throw new Error('Failed to delete data');
+    }
+};
+
+export const fetchNews = async () => {
+    return fetchData(`${API_BASE_URL}/news`);
 };
 
 export const fetchAnnouncement = async () => {
-    try {
-        const response = await axios.get(`${API_BASE_URL}/announcements`);
-        console.log(response.data)
-        return response.data; // Haber verilerini döndür
-    } catch (error) {
-        console.error('Duyuru verileri alınamadı:', error);
-        throw error;
-    }
+    return fetchData(`${API_BASE_URL}/announcements`);
 };
 
 export const updateNews = async (id: number, updatedData: any) => {
-    try {
-        const response = await axios.put(`${API_BASE_URL}/news/${id}`, updatedData);
-        return response.data;
-    } catch (error) {
-        console.error(error);
-        throw new Error('Failed to update news data');
-    }
+    return updateData(`${API_BASE_URL}/news`, id, updatedData);
 };
 
 export const updateAnnouncement = async (id: number, updatedData: any) => {
-    try {
-        const response = await axios.put(`${API_BASE_URL}/announcements/${id}`, updatedData);
-        return response.data;
-    } catch (error) {
-        console.error(error);
-        throw new Error('Failed to update news data');
-    }
+    return updateData(`${API_BASE_URL}/announcements`, id, updatedData);
 };
 
 export const deleteNews = async (id: number) => {
-    try {
-        await axios.delete(`${API_BASE_URL}/news/${id}`);
-    } catch (error) {
-        console.error(error);
-        throw new Error('Failed to delete news data');
-    }
+    return deleteData(`${API_BASE_URL}/news`, id);
 };
 
 export const deleteAnnouncement = async (id: number) => {
-    try {
-        await axios.delete(`${API_BASE_URL}/announcements/${id}`);
-    } catch (error) {
-        console.error(error);
-        throw new Error('Failed to delete news data');
+    return deleteData(`${API_BASE_URL}/announcements`, id);
+};
+
+export const showToast = (message: string, type: 'success' | 'error') => {
+    toast[type](message, {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+}
+
+export const truncateContent = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) {
+        return text;
     }
+    return text.slice(0, maxLength) + '...';
 };

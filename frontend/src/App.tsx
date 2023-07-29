@@ -1,15 +1,14 @@
 import React from 'react';
 import './App.css';
-import BottomNavbar from './components/header/BottomNavbar';
-import TopNavbar from './components/header/TopNavbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import NewsList from './components/news/NewsList';
-import NoticeList from './components/announcements/AnnouncementList';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import CustomPageTitle from './style/Titles';
-
+import NewsList from './components/news/NewsList';
+import AnnouncementList from './components/announcements/AnnouncementList';
+import BottomNavbar from './components/header/BottomNavbar';
+import TopNavbar from './components/header/TopNavbar';
+import PageTitle from './style/Titles';
 
 function App() {
   const [auth, setAuth] = React.useState<boolean>(false);
@@ -26,60 +25,60 @@ function App() {
         <BottomNavbar auth={auth} />
         <Routes>
           <Route path="/" element={
-            <CustomPageTitle title="Home">
+            <PageTitle title="Home">
               <Container>
                 <NewsList auth={auth} />
               </Container>
-            </CustomPageTitle>
+            </PageTitle>
           } />
           <Route
             path="/news"
             element={
-              <CustomPageTitle title="News">
+              <PageTitle title="News">
                 <Container>
                   <NewsList auth={auth} />
                 </Container>
-              </CustomPageTitle>
+              </PageTitle>
             }
           />
           <Route
             path="/announcement"
             element={
-              <CustomPageTitle title="Announcements">
+              <PageTitle title="Announcements">
                 <Container>
-                  <NoticeList auth={auth} />
+                  <AnnouncementList auth={auth} />
                 </Container>
-              </CustomPageTitle>
+              </PageTitle>
             }
           />
           <Route
             path="/-admin"
             element={
-              <CustomPageTitle title="Home | Admin">
+              <PageTitle title="Home | Admin">
                 <Container>
                   <NewsList auth={auth} />
                 </Container>
-              </CustomPageTitle>
+              </PageTitle>
             }
           />
           <Route
             path="/news-admin"
             element={
-              <CustomPageTitle title="News | Admin">
+              <PageTitle title="News | Admin">
                 <Container>
                   <NewsList auth={auth} />
                 </Container>
-              </CustomPageTitle>
+              </PageTitle>
             }
           />
           <Route
             path="/announcement-admin"
             element={
-              <CustomPageTitle title="Announcements | Admin">
+              <PageTitle title="Announcements | Admin">
                 <Container>
-                  <NoticeList auth={auth} />
+                  <AnnouncementList auth={auth} />
                 </Container>
-              </CustomPageTitle>
+              </PageTitle>
             }
           />
         </Routes>

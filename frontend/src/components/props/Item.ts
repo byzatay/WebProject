@@ -72,3 +72,10 @@ export interface TopNavbarProps {
 export interface BottomNavbarProps {
     auth: boolean;
 }
+
+// Title Props
+
+export interface TitleProps {
+    title: string;
+    children: React.ReactNode;
+}

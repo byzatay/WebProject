@@ -58,6 +58,7 @@ const NewsList: React.FC<{ auth: boolean }> = ({ auth }) => {
             <div className="title">
                 <h3>News</h3>
             </div>
+
             {auth && (
                 <div>
                     <Button style={{ backgroundColor: '#3e9fb3' }} size="small" className='button mb-3' onClick={toggleAddPopup}>
@@ -65,6 +66,7 @@ const NewsList: React.FC<{ auth: boolean }> = ({ auth }) => {
                     </Button>
                 </div>
             )}
+
             <AddPopup isOpen={isAddPopupOpen} toggle={toggleAddPopup} onNewsAdded={handleChange} />
             {paginatedNews.map((data: NewsItem) => (
                 <NewsCard
@@ -75,6 +77,7 @@ const NewsList: React.FC<{ auth: boolean }> = ({ auth }) => {
                     activity={data}
                 />
             ))}
+
             <PaginationComponent pageCount={pageCount} currentPage={currentPage} onChangePage={handleChangePage} />
         </div>
     );
