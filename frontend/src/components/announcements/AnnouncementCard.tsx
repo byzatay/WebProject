@@ -52,7 +52,7 @@ const AnnouncementCard: React.FC<ItemProps> = ({ auth, handleDelete, handleUpdat
                             <div className="img-square-wrapper">
                                 <img
                                     className="image"
-                                    src={require(`../../img/${activity.image}`)}
+                                    src={require(`../../../../backend/uploads/${activity.image}`)}
                                     alt="Announcement"
                                     style={{ height: "200px", width: "300px" }}
                                 />
@@ -72,7 +72,7 @@ const AnnouncementCard: React.FC<ItemProps> = ({ auth, handleDelete, handleUpdat
                         </div>
 
                         <div className="card-footer">
-                            <small className="text-muted">{activity.expDate}</small>
+                            <small className="text-muted">{new Date(activity.expDate).toLocaleString()}</small>
                         </div>
 
                         {auth && (

@@ -3,16 +3,39 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import TextField from '@mui/material/TextField';
 import { NewsItem, AnnouncementItem, EditItemProps } from '../props/Item';
 import { showToast } from '../../api';
+import axios from 'axios';
 
 const EditPopup: React.FC<EditItemProps> = ({ isOpen, toggle, itemData, handleSave }) => {
 
     const [formData, setFormData] = React.useState<NewsItem | AnnouncementItem>(itemData);
+    const [image, setImage] = React.useState<string>('');
 
-    useEffect(() => { setFormData(itemData); }, [itemData]);
+    useEffect(() => { setFormData(itemData); setImage(itemData.image || ''); }, [itemData]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
+
+    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files.length > 0) {
+            const file = event.target.files[0];
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            try {
+                const response = await axios.post('http://localhost:8080/uploadImage', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                setImage(response.data);
+            } catch (error) {
+                console.error(error);
+                showToast('Failed to upload image.', 'error');
+            }
+        }
     };
 
     const handleSaveClick = () => {
@@ -22,7 +45,9 @@ const EditPopup: React.FC<EditItemProps> = ({ isOpen, toggle, itemData, handleSa
             showToast('All fields must be filled!', 'error');
             return;
         }
-        handleSave(formData);
+
+        const updatedData = { ...formData, image };
+        handleSave(updatedData);
         toggle();
     };
 
@@ -43,10 +68,18 @@ const EditPopup: React.FC<EditItemProps> = ({ isOpen, toggle, itemData, handleSa
                     onChange={handleChange} variant="outlined" style={{ marginBottom: '10px' }}
                 />
                 {itemData.image && (
-                    <TextField
-                        label="Image" name="image" value={formData.image} onChange={handleChange}
-                        fullWidth variant="outlined" style={{ marginBottom: '10px' }}
-                    />
+                    <div>
+                        <TextField
+                            label="Image" name="image" value={image} onChange={handleChange}
+                            fullWidth variant="outlined" style={{ marginBottom: '10px' }}
+                        />
+                        <input
+                            type="file"
+                            accept=".jpg, .jpeg, .png .webp"
+                            onChange={handleFileChange}
+                            style={{ marginBottom: '10px' }}
+                        />
+                    </div>
                 )}
                 {itemData.link && (
                     <TextField

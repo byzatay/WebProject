@@ -15,7 +15,7 @@ public class Announcement extends Activity {
 		return image;
 	}
 
-	public void setImagePath(String image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 }

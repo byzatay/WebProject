@@ -53,7 +53,7 @@ const NewsCard: React.FC<ItemProps> = ({ auth, handleDelete, handleUpdate, activ
                                 {activity.topic}
                             </Typography>
                             <Typography variant="subtitle1" color="text.secondary" className="mb-1">
-                                {activity.expDate}
+                                {new Date(activity.expDate).toLocaleString()}
                             </Typography>
                             <Typography variant="subtitle1" paragraph>
                                 {truncateContent(activity.content, 100)}

@@ -3,7 +3,7 @@
 export interface Item {
     id: number;
     topic: string;
-    expDate: string;
+    expDate: Date;
     content: string;
     image?: string; // Make it optional
     link?: string;
