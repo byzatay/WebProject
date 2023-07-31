@@ -59,14 +59,11 @@ public class AnnouncementController {
 	@PostMapping("/uploadImage")
 	public ResponseEntity<String> uploadImage(@RequestPart MultipartFile image) {
 		try {
-			// Proje kök dizinindeki "img" klasörüne dosya yolu oluşturun.
 			String rootDir = System.getProperty("user.dir");
 			Path imgPath = Paths.get(rootDir, "backend", "uploads", image.getOriginalFilename());
 
-			// Dosyayı "img" klasörüne kaydedin.
 			Files.write(imgPath, image.getBytes());
 
-			// Resim adını istemciye gönderin.
 			return ResponseEntity.ok().body(image.getOriginalFilename());
 		} catch (IOException e) {
 			e.printStackTrace();

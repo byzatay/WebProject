@@ -9,7 +9,6 @@ import AddPopup from '../popups/AddPopup';
 const AnnouncementList: React.FC<{ auth: boolean }> = ({ auth }) => {
     const [announcements, setAnnouncement] = React.useState<AnnouncementItem[]>([]);
     const [currentPage, setCurrentPage] = React.useState<number>(1);
-    const itemsPerPage: number = 5;
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState<boolean>(false);
 
     const toggleAddPopup = () => { setIsAddPopupOpen(!isAddPopupOpen); };
@@ -44,6 +43,7 @@ const AnnouncementList: React.FC<{ auth: boolean }> = ({ auth }) => {
         }
     };
 
+    const itemsPerPage: number = 5;
     const paginatedAnnouncements: AnnouncementItem[] = announcements.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
     const pageCount: number = Math.ceil(announcements.length / itemsPerPage);
 

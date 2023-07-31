@@ -6,7 +6,6 @@ const API_BASE_URL: string = 'http://localhost:8080'; // Spring Boot API URL'si
 export const fetchData = async (URL: string) => {
     try {
         const response = await axios.get(URL);
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error(error);

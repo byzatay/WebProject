@@ -11,7 +11,6 @@ const NewsList: React.FC<{ auth: boolean }> = ({ auth }) => {
     const [news, setNews] = React.useState<NewsItem[]>([]);
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState<boolean>(false);
     const [currentPage, setCurrentPage] = React.useState<number>(1);
-    const itemsPerPage: number = 5;
 
     const toggleAddPopup = () => { setIsAddPopupOpen(!isAddPopupOpen); };
 
@@ -46,6 +45,7 @@ const NewsList: React.FC<{ auth: boolean }> = ({ auth }) => {
         }
     };
 
+    const itemsPerPage: number = 5;
     const paginatedNews: NewsItem[] = news.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
     const pageCount: number = Math.ceil(news.length / itemsPerPage);
 

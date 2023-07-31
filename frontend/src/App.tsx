@@ -21,8 +21,10 @@ function App() {
     <div>
       <ToastContainer />
       <BrowserRouter>
-        <TopNavbar auth={auth} onAuthChange={handleAuthChange} />
-        <BottomNavbar auth={auth} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <TopNavbar auth={auth} onAuthChange={handleAuthChange} />
+          <BottomNavbar auth={auth} />
+        </div>
         <Routes>
           <Route path="/" element={
             <PageTitle title="Home">
