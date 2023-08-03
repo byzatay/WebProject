@@ -1,6 +1,7 @@
 package com.project.backend.Service;
 
 import java.util.List;
+
 import com.project.backend.Entities.News;
 
 public interface INewsService {
@@ -13,4 +14,6 @@ public interface INewsService {
 	void delete(Long id);
 
 	News getById(Long id);
+
+	List<News> search(String keyword);
 }

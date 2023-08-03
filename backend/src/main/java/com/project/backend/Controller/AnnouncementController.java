@@ -70,4 +70,9 @@ public class AnnouncementController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload image.");
 		}
 	}
+
+	@GetMapping("/announcements/search/{keyword}")
+	public List<Announcement> searchAnnouncements(@PathVariable String keyword) {
+		return announcementService.search(keyword);
+	}
 }

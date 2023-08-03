@@ -14,4 +14,6 @@ public interface IAnnouncementService {
 	void delete(Long id);
 
 	Announcement getById(Long id);
+
+	List<Announcement> search(String keyword);
 }

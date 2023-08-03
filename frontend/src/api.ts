@@ -32,12 +32,14 @@ const deleteData = async (URL: string, id: number) => {
     }
 };
 
-export const fetchNews = async () => {
-    return fetchData(`${API_BASE_URL}/news`);
+export const fetchNews = async (keyword?: string) => {
+    const URL = keyword ? `${API_BASE_URL}/news/search/${keyword}` : `${API_BASE_URL}/news`;
+    return fetchData(URL);
 };
 
-export const fetchAnnouncement = async () => {
-    return fetchData(`${API_BASE_URL}/announcements`);
+export const fetchAnnouncement = async (keyword?: string) => {
+    const URL = keyword ? `${API_BASE_URL}/announcements/search/${keyword}` : `${API_BASE_URL}/announcements`;
+    return fetchData(URL);
 };
 
 export const updateNews = async (id: number, updatedData: any) => {

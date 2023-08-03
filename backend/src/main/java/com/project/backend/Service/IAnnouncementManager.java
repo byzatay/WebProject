@@ -51,4 +51,10 @@ public class IAnnouncementManager implements IAnnouncementService {
 		return this.announcementDal.getById(id);
 	}
 
+	@Override
+	@Transactional
+	public List<Announcement> search(String keyword) {
+		return announcementDal.search(keyword);
+	}
+
 }

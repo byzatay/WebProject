@@ -53,4 +53,15 @@ public abstract class HibernateGenericRepository<Entity> implements IGenericRepo
         Session session = entityManager.unwrap(Session.class);
         session.remove(entity);
     }
+
+    @Override
+    @Transactional
+    public List<Entity> search(String keyword) {
+        Session session = entityManager.unwrap(Session.class);
+        return session
+                .createQuery("from " + getEntityType().getSimpleName() + " where content ilike :keyword",
+                        getEntityType())
+                .setParameter("keyword", "%" + keyword + "%")
+                .getResultList();
+    }
 }

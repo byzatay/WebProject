@@ -17,19 +17,27 @@ function App() {
     setAuth(newAuth);
   };
 
+  const [searchKeyword, setSearchKeyword] = React.useState<string>('');
+
+  const handleKeywordChange = (keyword: string) => {
+    setSearchKeyword(keyword);
+  };
+
+  console.log(searchKeyword);
+
   return (
     <div>
       <ToastContainer />
       <BrowserRouter>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <TopNavbar auth={auth} onAuthChange={handleAuthChange} />
-          <BottomNavbar auth={auth} />
+          <BottomNavbar auth={auth} onKeywordChange={handleKeywordChange} />
         </div>
         <Routes>
           <Route path="/" element={
             <PageTitle title="Home">
               <Container>
-                <NewsList auth={auth} />
+                <NewsList auth={auth} searchKeyword={searchKeyword} />
               </Container>
             </PageTitle>
           } />
@@ -38,7 +46,7 @@ function App() {
             element={
               <PageTitle title="News">
                 <Container>
-                  <NewsList auth={auth} />
+                  <NewsList auth={auth} searchKeyword={searchKeyword} />
                 </Container>
               </PageTitle>
             }
@@ -48,7 +56,7 @@ function App() {
             element={
               <PageTitle title="Announcements">
                 <Container>
-                  <AnnouncementList auth={auth} />
+                  <AnnouncementList auth={auth} searchKeyword={searchKeyword} />
                 </Container>
               </PageTitle>
             }
@@ -58,7 +66,7 @@ function App() {
             element={
               <PageTitle title="Home | Admin">
                 <Container>
-                  <NewsList auth={auth} />
+                  <NewsList auth={auth} searchKeyword={searchKeyword} />
                 </Container>
               </PageTitle>
             }
@@ -68,7 +76,7 @@ function App() {
             element={
               <PageTitle title="News | Admin">
                 <Container>
-                  <NewsList auth={auth} />
+                  <NewsList auth={auth} searchKeyword={searchKeyword} />
                 </Container>
               </PageTitle>
             }
@@ -78,7 +86,7 @@ function App() {
             element={
               <PageTitle title="Announcements | Admin">
                 <Container>
-                  <AnnouncementList auth={auth} />
+                  <AnnouncementList auth={auth} searchKeyword={searchKeyword} />
                 </Container>
               </PageTitle>
             }

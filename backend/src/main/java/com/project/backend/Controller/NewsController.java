@@ -47,4 +47,9 @@ public class NewsController {
 	public News getNewsById(@PathVariable Long id) {
 		return newsService.getById(id);
 	}
+
+	@GetMapping("/news/search/{keyword}")
+	public List<News> searchNews(@PathVariable String keyword) {
+		return newsService.search(keyword);
+	}
 }

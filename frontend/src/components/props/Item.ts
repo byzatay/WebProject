@@ -5,7 +5,7 @@ export interface Item {
     topic: string;
     expDate: Date;
     content: string;
-    image?: string; // Make it optional
+    image?: string;
     link?: string;
 }
 
@@ -33,8 +33,8 @@ export type ItemData = {
     content: string;
     expDate: string;
     type: ItemType;
-    link?: string; // For News type
-    image?: string; // For Announcement type
+    link?: string;
+    image?: string;
 };
 
 export type AddItemPopupProps = {
@@ -71,6 +71,7 @@ export interface TopNavbarProps {
 
 export interface BottomNavbarProps {
     auth: boolean;
+    onKeywordChange: (keyword: string) => void;
 }
 
 // Title Props

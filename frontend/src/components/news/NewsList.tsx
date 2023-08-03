@@ -6,7 +6,7 @@ import { NewsItem } from '../props/Item';
 import PaginationComponent from '../pagination/Pagination';
 import AddPopup from '../popups/AddPopup';
 
-const NewsList: React.FC<{ auth: boolean }> = ({ auth }) => {
+const NewsList: React.FC<{ auth: boolean, searchKeyword: string }> = ({ auth, searchKeyword }) => {
 
     const [news, setNews] = React.useState<NewsItem[]>([]);
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState<boolean>(false);
@@ -17,19 +17,19 @@ const NewsList: React.FC<{ auth: boolean }> = ({ auth }) => {
     useEffect(() => {
         const getNews = async () => {
             try {
-                const newsData: NewsItem[] = await fetchNews();
+                const newsData: NewsItem[] = await fetchNews(searchKeyword);
                 setNews(newsData);
             } catch (error) {
                 console.log(error);
             }
         };
         getNews();
-    }, []);
+    }, [searchKeyword]);
 
 
     const handleChange = async () => {
         try {
-            const newsData: NewsItem[] = await fetchNews();
+            const newsData: NewsItem[] = await fetchNews(searchKeyword);
             setNews(newsData);
         } catch (error) {
             console.log(error);

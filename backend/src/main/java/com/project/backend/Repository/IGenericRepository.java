@@ -12,4 +12,6 @@ public interface IGenericRepository<Entity> {
     void update(Entity entity);
 
     void delete(Entity entity);
+
+    List<Entity> search(String keyword);
 }

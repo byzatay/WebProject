@@ -50,4 +50,11 @@ public class INewsManager implements INewsService {
 	public News getById(Long id) {
 		return this.newsDal.getById(id);
 	}
+
+	@Override
+	@Transactional
+	public List<News> search(String keyword) {
+		return newsDal.search(keyword);
+	}
+
 }

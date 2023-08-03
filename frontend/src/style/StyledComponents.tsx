@@ -1,10 +1,56 @@
-import { styled } from '@mui/material/styles';
+import { InputBase } from '@mui/material';
+import { alpha, styled } from '@mui/material/styles';
+
+export const StyledSearch = styled('div')(({ theme }) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.black, 0.15),
+    '&:hover': {
+        backgroundColor: alpha(theme.palette.common.black, 0.25),
+    },
+    marginRight: '15px',
+    width: '100%',
+    height: '35px',
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(1),
+        width: 'auto',
+    },
+}));
+
+export const StyledSearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+}));
+
+export const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'black',
+    '& .MuiInputBase-input': {
+        padding: theme.spacing(1, 1, 1, 0),
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            width: '12ch',
+            '&:focus': {
+                width: '20ch',
+            },
+        },
+    },
+}));
 
 export const StyledAppBar = styled('div')(({ theme }) => ({
     width: '100%',
     height: '50px',
     borderTop: '5px solid #3e9fb3',
     backgroundColor: '#f3f3f3',
+    top: '40px',
+    position: 'fixed',
+    zIndex: 2
 }));
 
 export const StyledToolbar = styled('div')(({ theme }) => ({

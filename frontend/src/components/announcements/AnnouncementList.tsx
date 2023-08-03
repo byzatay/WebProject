@@ -6,7 +6,7 @@ import { AnnouncementItem } from '../props/Item';
 import PaginationComponent from '../pagination/Pagination';
 import AddPopup from '../popups/AddPopup';
 
-const AnnouncementList: React.FC<{ auth: boolean }> = ({ auth }) => {
+const AnnouncementList: React.FC<{ auth: boolean, searchKeyword: string }> = ({ auth, searchKeyword }) => {
     const [announcements, setAnnouncement] = React.useState<AnnouncementItem[]>([]);
     const [currentPage, setCurrentPage] = React.useState<number>(1);
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState<boolean>(false);
@@ -16,14 +16,14 @@ const AnnouncementList: React.FC<{ auth: boolean }> = ({ auth }) => {
     useEffect(() => {
         const getAnnouncement = async () => {
             try {
-                const announcementData: AnnouncementItem[] = await fetchAnnouncement();
+                const announcementData: AnnouncementItem[] = await fetchAnnouncement(searchKeyword);
                 setAnnouncement(announcementData);
             } catch (error) {
                 console.log(error);
             }
         };
         getAnnouncement();
-    }, []);
+    }, [searchKeyword]);
 
     const handleChange = async () => {
         try {
