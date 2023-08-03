@@ -31,7 +31,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = ({ auth, onKeywordChange }) =>
     const navigate = useNavigate();
 
     const handleClick = (label: string) => {
-        if (auth) {
+        if (auth && label != "/home") {
             label += '-admin';
         }
         navigate(label);
@@ -41,7 +41,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = ({ auth, onKeywordChange }) =>
         <StyledAppBar>
             <StyledToolbar>
                 <div>
-                    <Chip icon={<HomeOutlinedIcon />} label="Home" variant="outlined" onClick={() => handleClick('/')} sx={{ marginRight: '5px' }} />
+                    <Chip icon={<HomeOutlinedIcon />} label="Home" variant="outlined" onClick={() => handleClick('/home')} sx={{ marginRight: '5px' }} />
                     <Chip icon={<FeedOutlinedIcon />} label="News" variant="outlined" onClick={() => handleClick('/news')} sx={{ marginRight: '5px' }} />
                     <Chip icon={<CampaignOutlinedIcon />} label="Announcements" variant="outlined" onClick={() => handleClick('/announcement')} sx={{ marginRight: '5px' }} />
                 </div>
@@ -58,9 +58,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = ({ auth, onKeywordChange }) =>
                             onChange={handleKeywordChange}
                             onKeyPress={handleInputKeyPress} />
                         {searchKeyword && (
-
                             <ClearIcon onClick={handleClearSearch} sx={{ marginBottom: '4px', marginRight: '4px' }} />
-
                         )}
                     </StyledSearch>
                 </div>

@@ -9,6 +9,7 @@ import AnnouncementList from './components/announcements/AnnouncementList';
 import BottomNavbar from './components/header/BottomNavbar';
 import TopNavbar from './components/header/TopNavbar';
 import PageTitle from './style/Titles';
+import Home from './components/home/Home';
 
 function App() {
   const [auth, setAuth] = React.useState<boolean>(false);
@@ -37,7 +38,14 @@ function App() {
           <Route path="/" element={
             <PageTitle title="Home">
               <Container>
-                <NewsList auth={auth} searchKeyword={searchKeyword} />
+                <Home />
+              </Container>
+            </PageTitle>
+          } />
+          <Route path="/home" element={
+            <PageTitle title="Home">
+              <Container>
+                <Home />
               </Container>
             </PageTitle>
           } />
@@ -57,16 +65,6 @@ function App() {
               <PageTitle title="Announcements">
                 <Container>
                   <AnnouncementList auth={auth} searchKeyword={searchKeyword} />
-                </Container>
-              </PageTitle>
-            }
-          />
-          <Route
-            path="/-admin"
-            element={
-              <PageTitle title="Home | Admin">
-                <Container>
-                  <NewsList auth={auth} searchKeyword={searchKeyword} />
                 </Container>
               </PageTitle>
             }
