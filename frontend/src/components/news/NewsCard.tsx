@@ -47,7 +47,7 @@ const NewsCard: React.FC<ItemProps> = ({ auth, handleDelete, handleUpdate, activ
         <div>
             <Grid item xs={12} md={6}>
                 <CardActionArea component="a" href="#">
-                    <Card sx={{ display: 'flex' }} className="news-card" >
+                    <Card className="card" >
                         <CardContent sx={{ flex: 1 }} onClick={toggleInfoModal}>
                             <Typography component="h2" variant="h5" className="mb-1" >
                                 {activity.topic}

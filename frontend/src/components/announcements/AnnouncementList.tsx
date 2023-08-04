@@ -52,7 +52,7 @@ const AnnouncementList: React.FC<{ auth: boolean, searchKeyword: string }> = ({ 
     };
 
     return (
-        <div className="list mt-5">
+        <div className="list">
             <div className="title">
                 <h3>Announcements</h3>
             </div>

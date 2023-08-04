@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const API_BASE_URL: string = 'http://localhost:8080'; // Spring Boot API URL'si
+const API_BASE_URL: string = 'http://localhost:8080';
 
 export const fetchData = async (URL: string) => {
     try {

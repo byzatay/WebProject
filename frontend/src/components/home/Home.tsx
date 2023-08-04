@@ -26,6 +26,7 @@ const Home: React.FC = () => {
                     key={image.title}
                     style={{
                         width: image.width,
+                        border: '2px solid #000'
                     }}
                 >
                     <StyledImageSrc style={{ backgroundImage: `url(${image.url})` }} />

@@ -1,3 +1,22 @@
+/* NewsCard AnnouncementCard */
+.card {
+  margin-bottom: 15px;
+  display: 'flex';
+}
+
+.title {
+  text-align: center;
+  font-family: 'Open Sans', 'Segoe UI', 'Droid Sans', Tahoma, Arial, sans-serif;
+  font-size: 25px;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  color: #5f7676;
+  background: #f0f3f5;
+  height: '70px';
+  align-items: center;
+}
+
+/* NewsList AnnouncementList */
 .list {
   display: flex;
   flex-direction: column;
@@ -5,25 +24,7 @@
   margin-bottom: 10px;
 }
 
-.news-card {
-  margin-bottom: 10px;
-}
-
-
-
-.title {
-  text-align: center;
-  font-family: 'Open Sans', 'Segoe UI', 'Droid Sans', Tahoma, Arial, sans-serif;
-  font-size: 25px;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  color: #5f7676;
-  background: #f0f3f5;
-  height: '70px';
-  align-items: center;
-}
-
-
+/* NewsCard NewsList AnnouncementCard AnnouncementList */
 .button {
   margin-left: 10px;
   float: right;
@@ -31,10 +32,12 @@
   width: fit-content;
 }
 
+/* Add Popup */
 .form-group {
   margin-bottom: 5px;
 }
 
+/* Pagination */
 .pagination-container {
   display: flex;
   justify-content: center;
@@ -54,7 +57,6 @@
 
   & .MuiPagination-root {
     margin-bottom: 20px;
-    /* Sayfanın en altına 20 piksel boşluk ekleyin */
   }
 
   & .MuiPaginationItem-root {
@@ -68,6 +70,5 @@
 
   & .MuiPaginationItem-root.Mui-selected:hover {
     background-color: #6b6b64;
-    /* Seçili sayfanın üzerine gelindiğindeki yeni arka plan rengi */
   }
 }

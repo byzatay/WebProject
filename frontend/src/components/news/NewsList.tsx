@@ -54,7 +54,7 @@ const NewsList: React.FC<{ auth: boolean, searchKeyword: string }> = ({ auth, se
     };
 
     return (
-        <div className="list mt-5">
+        <div className="list">
             <div className="title">
                 <h3>News</h3>
             </div>
