@@ -24,8 +24,6 @@ function App() {
     setSearchKeyword(keyword);
   };
 
-  console.log(searchKeyword);
-
   return (
     <div>
       <ToastContainer />

@@ -20,14 +20,7 @@ public class Activity {
 	private Date expDate;
 
 	public Activity(Long id, String topic, String content, Date expDate) {
-		super();
 		this.id = id;
-		this.topic = topic;
-		this.content = content;
-		this.expDate = expDate;
-	}
-
-	public Activity(String topic, String content, Date expDate) {
 		this.topic = topic;
 		this.content = content;
 		this.expDate = expDate;
